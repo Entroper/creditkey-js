@@ -1,5 +1,6 @@
 import styles from '../../styles/index.sass';
 import { api, pdpHost } from '../../utils/platform';
+import modal from './modal.js';
 
 var Button = function Button(key, label, type, size, slug, styles) {
   if (size === void 0) {
@@ -39,6 +40,10 @@ var Button = function Button(key, label, type, size, slug, styles) {
 
     case "pdp":
       return "<span class=\"creditkey\"><a href=\"" + host + "/apply/start/" + key + "\" target=\"_new\" class=\"button is-link " + buttonClass + "\" style=\"" + styles + "\">\n          <span class=\"pdp\">" + label + "</span> <span style=\"padding: 0 5px 0 0;\">with</span>\n          <img src=\"" + logo_url(size) + "\" class=\"ck-logo-" + size + " \"/>\n        </a>\n      </span>";
+      break;
+
+    case "modal-pdp":
+      return "<span class=\"creditkey\"><a onclick=\"modal(" + host + "/apply/start/" + key + ")\" class=\"button is-link " + buttonClass + "\" style=\"" + styles + "\">\n          <span class=\"pdp\">" + label + "</span> <span style=\"padding: 0 5px 0 0;\">with</span>\n          <img src=\"" + logo_url(size) + "\" class=\"ck-logo-" + size + " \"/>\n        </a>\n      </span>";
       break;
 
     default:

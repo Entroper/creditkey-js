@@ -1,5 +1,6 @@
 import styles from '../../styles/index.sass';
 import { api, pdpHost } from '../../utils/platform';
+import modal from './modal.js';
 
 const Button = (key, label, type, size = "medium", slug = "", styles) => {
   const host = pdpHost(api);
@@ -31,6 +32,14 @@ const Button = (key, label, type, size = "medium", slug = "", styles) => {
 
     case "pdp":
       return `<span class="creditkey"><a href="${host}/apply/start/${key}" target="_new" class="button is-link ${buttonClass}" style="${styles}">
+          <span class="pdp">${label}</span> <span style="padding: 0 5px 0 0;">with</span>
+          <img src="${logo_url(size)}" class="ck-logo-${size} "/>
+        </a>
+      </span>`;
+      break;
+
+    case "modal-pdp":
+      return `<span class="creditkey"><a onclick="modal(${host}/apply/start/${key})" class="button is-link ${buttonClass}" style="${styles}">
           <span class="pdp">${label}</span> <span style="padding: 0 5px 0 0;">with</span>
           <img src="${logo_url(size)}" class="ck-logo-${size} "/>
         </a>
